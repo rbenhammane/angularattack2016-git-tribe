@@ -7,8 +7,6 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {LoginComponent} from './components/login/login.component';
 import {WorldComponent} from './components/world/world.component';
 
-declare var Auth0Lock;
-
 @Component({
     selector: 'git-tribe',
     template: `

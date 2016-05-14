@@ -1,9 +1,9 @@
 import {Component, bind} from '@angular/core';
-import {RouteConfig, Router, APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {RouteConfig, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {CanActivate} from '@angular/router-deprecated';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
-import {WorldComponent} from '../world/world.component';
 
+declare var Auth0Lock;
 
 @Component({
   templateUrl: './src/components/login/login.component.html',
@@ -44,10 +44,6 @@ export class LoginComponent {
 
   loggedIn() {
     return tokenNotExpired();
-  }
-
-  goToWorld() {
-  	this._router.navigate(['/World']);
   }
 
 }

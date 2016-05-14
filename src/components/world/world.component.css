@@ -1,0 +1,6 @@
+.world {
+	margin: 0 auto;
+	width: 600px;
+	height: 600px;
+	background-image: url('/images/world.png');
+}

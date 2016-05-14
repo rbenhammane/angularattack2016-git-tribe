@@ -50,9 +50,6 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'],
                 loggedIn() {
                     return angular2_jwt_1.tokenNotExpired();
                 }
-                goToWorld() {
-                    this._router.navigate(['/World']);
-                }
             };
             LoginComponent = __decorate([
                 core_1.Component({

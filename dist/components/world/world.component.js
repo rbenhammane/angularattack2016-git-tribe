@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router-deprecated'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated'], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1;
+    var core_1, router_deprecated_1, router_deprecated_2, angular2_jwt_1;
     var WorldComponent;
     return {
         setters:[
@@ -19,18 +19,21 @@ System.register(['@angular/core', '@angular/router-deprecated'], function(export
             },
             function (router_deprecated_1_1) {
                 router_deprecated_1 = router_deprecated_1_1;
+                router_deprecated_2 = router_deprecated_1_1;
+            },
+            function (angular2_jwt_1_1) {
+                angular2_jwt_1 = angular2_jwt_1_1;
             }],
         execute: function() {
             let WorldComponent = class WorldComponent {
             };
             WorldComponent = __decorate([
                 core_1.Component({
-                    selector: 'world',
-                    template: `
-    test
-  `,
+                    templateUrl: './src/components/world/world.component.html',
+                    styleUrls: ['./src/components/world/world.component.css'],
                     directives: [router_deprecated_1.ROUTER_DIRECTIVES]
-                }), 
+                }),
+                router_deprecated_2.CanActivate(() => angular2_jwt_1.tokenNotExpired()), 
                 __metadata('design:paramtypes', [])
             ], WorldComponent);
             exports_1("WorldComponent", WorldComponent);
