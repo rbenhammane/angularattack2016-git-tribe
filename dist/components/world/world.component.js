@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', './world.helper', './world-village.component', '../../services/const.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, router_deprecated_2, angular2_jwt_1;
+    var core_1, router_deprecated_1, router_deprecated_2, angular2_jwt_1, world_helper_1, world_village_component_1, const_service_1;
     var WorldComponent;
     return {
         setters:[
@@ -23,18 +23,73 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'],
             },
             function (angular2_jwt_1_1) {
                 angular2_jwt_1 = angular2_jwt_1_1;
+            },
+            function (world_helper_1_1) {
+                world_helper_1 = world_helper_1_1;
+            },
+            function (world_village_component_1_1) {
+                world_village_component_1 = world_village_component_1_1;
+            },
+            function (const_service_1_1) {
+                const_service_1 = const_service_1_1;
             }],
         execute: function() {
             let WorldComponent = class WorldComponent {
+                constructor(_consts) {
+                    this._consts = _consts;
+                    this.mousex = 0;
+                    this.mousey = 0;
+                    this.worldtop = 0;
+                    this.worldleft = 0;
+                }
+                ngOnInit() {
+                    this.repos = this._consts.repos;
+                    this.coordinates = world_helper_1.WorldHelper.generateVillagesCoords(this.repos);
+                    this.worldtop = (600 - this.getDiameter()) / 2;
+                    this.worldleft = (600 - this.getDiameter()) / 2;
+                }
+                floor(val) {
+                    return Math.floor(val);
+                }
+                getDiameter() {
+                    return (600 * (2 * Math.floor((world_helper_1.WorldHelper.rotationRadius + 7) / 15) + 1));
+                }
+                move(event) {
+                    if (event.buttons === 1) {
+                        if (this.mousex !== 0 && this.mousey !== 0) {
+                            this.worldtop += event.y - this.mousey;
+                            this.worldleft += event.x - this.mousex;
+                            if (this.worldtop < 600 - this.getDiameter()) {
+                                this.worldtop = 600 - this.getDiameter();
+                            }
+                            if (this.worldleft < 600 - this.getDiameter()) {
+                                this.worldleft = 600 - this.getDiameter();
+                            }
+                            if (this.worldtop > 0) {
+                                this.worldtop = 0;
+                            }
+                            if (this.worldleft > 0) {
+                                this.worldleft = 0;
+                            }
+                        }
+                        this.mousex = event.x;
+                        this.mousey = event.y;
+                    }
+                }
+                reset() {
+                    this.mousex = 0;
+                    this.mousey = 0;
+                }
             };
             WorldComponent = __decorate([
                 core_1.Component({
                     templateUrl: './src/components/world/world.component.html',
                     styleUrls: ['./src/components/world/world.component.css'],
-                    directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+                    directives: [router_deprecated_1.ROUTER_DIRECTIVES, world_village_component_1.WorldVillageComponent],
+                    providers: [const_service_1.ConstService]
                 }),
                 router_deprecated_2.CanActivate(() => angular2_jwt_1.tokenNotExpired()), 
-                __metadata('design:paramtypes', [])
+                __metadata('design:paramtypes', [const_service_1.ConstService])
             ], WorldComponent);
             exports_1("WorldComponent", WorldComponent);
         }

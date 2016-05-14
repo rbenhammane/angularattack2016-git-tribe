@@ -1,6 +1,16 @@
-.world {
+.world-container {
+	position: relative;
 	margin: 0 auto;
 	width: 600px;
 	height: 600px;
+	overflow: hidden;
+	border: 5px solid;
+	border-radius: 10px;
+}
+
+.world {
+	position: absolute;
+	margin: auto;
 	background-image: url('/images/world.png');
+	cursor: pointer;
 }
