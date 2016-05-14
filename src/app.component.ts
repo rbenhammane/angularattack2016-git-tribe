@@ -1,59 +1,55 @@
 import {Component, bind} from '@angular/core';
-import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, Routes, Router} from '@angular/router';
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router} from '@angular/router-deprecated';
 import {Location} from '@angular/common';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+import {LoginComponent} from './components/login/login.component';
+import {WorldComponent} from './components/world/world.component';
+
 declare var Auth0Lock;
 
 @Component({
-    selector: 'git-village',
+    selector: 'git-tribe',
     template: `
-    <h1>Welcome to Angular2 with Auth0</h1>
-    <button *ngIf="!loggedIn()" (click)="login()">Login</button>
-    <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
-    	<a [routerLink]="['UserForm']"><h1>{{title}}</h1></a>
-	    <router-outlet></router-outlet>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">{{ title }}</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+
+          </div>
+        </div>
+      </header>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <footer class="demo-footer mdl-mini-footer">
+          <div class="mdl-mini-footer--left-section">
+            <ul class="mdl-mini-footer--link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy and Terms</a></li>
+              <li><a href="#">User Agreement</a></li>
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
     `,
-	directives: [ROUTER_DIRECTIVES],
-	providers: [ROUTER_PROVIDERS]
+	directives: [ROUTER_DIRECTIVES]
 })
-@Routes([
-  { path: '/d',  component: AppComponent }
+@RouteConfig([
+  { path: '/',      name: 'Login',  component: LoginComponent },
+  { path: '/world', name: 'World',  component: WorldComponent }
 ])
 export class AppComponent {
-	private title: string = 'Git Village Viewer';
 
-  lock = new Auth0Lock('6VzIODFHRWvGU14nGK0rMTuDwXBqBNmt', 'gittribe.auth0.com');
-
-
-  login() {
-    let self = this;
-    this.lock.show((err: string, profile: string, id_token: string) => {
-        if (err) {
-          throw new Error(err);
-        }
-
-        localStorage.setItem('profile', JSON.stringify(profile));
-        localStorage.setItem('id_token', id_token);
-
-        console.log(
-          // this.jwtHelper.decodeToken(id_token),
-          // this.jwtHelper.getTokenExpirationDate(id_token),
-          // this.jwtHelper.isTokenExpired(id_token)
-        );
-
-        self.loggedIn();
-      });
-  }
-
-  logout() {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-  }
-
-  loggedIn() {
-    return tokenNotExpired();
-  }
+	title: string = 'Git Tribe Viewer';
 
 }
