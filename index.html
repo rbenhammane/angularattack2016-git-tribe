@@ -37,10 +37,11 @@
 
   <script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
   <!-- IE required polyfill -->
-  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-  <script src="node_modules/zone.js/dist/zone.js"></script>
-  <script src="node_modules/reflect-metadata/Reflect.js"></script>
-  <script src="node_modules/systemjs/dist/system.js"></script>
+     <script src="https://rumblex.s3.amazonaws.com/starter/es6-shim/es6-shim.min.js"></script>
+    <script src="https://rumblex.s3.amazonaws.com/starter/zone.js/dist/zone.js"></script>
+    <script src="https://rumblex.s3.amazonaws.com/starter/reflect-metadata/Reflect.js"></script>
+    <script src="https://rumblex.s3.amazonaws.com/starter/rxjs/bundles/Rx.umd.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.27/system.js"></script>
 
   <script>
       //configure system loader
@@ -48,20 +49,20 @@
           packages: {
             "dist": { defaultExtension: 'js' },
             "angular2-jwt": { defaultExtension: 'js' },
-            "@angular/common": { main: "index.js", defaultExtension: "js" },
-            "@angular/compiler": { main: "index.js", defaultExtension: "js" },
-            "@angular/core": { main: "index.js", defaultExtension: "js" },
-            "@angular/http": { main: "index.js", defaultExtension: "js" },
-            "@angular/platform-browser": { main: "index.js", defaultExtension: "js" },
-            "@angular/platform-browser-dynamic": { main: "index.js", defaultExtension: "js" },
-            "@angular/router": { main: "index.js", defaultExtension: "js" },
-            "@angular/router-deprecated": { main: "index.js", defaultExtension: "js" },
+            "@angular/common": { main: "common.umd.js", defaultExtension: "js" },
+            "@angular/compiler": { main: "compiler.umd.js", defaultExtension: "js" },
+            "@angular/core": { main: "core.umd.js", defaultExtension: "js" },
+            "@angular/http": { main: "http.umd.js", defaultExtension: "js" },
+            "@angular/platform-browser": { main: "platform-browser.umd.js", defaultExtension: "js" },
+            "@angular/platform-browser-dynamic": { main: "platform-browser-dynamic.umd.js", defaultExtension: "js" },
+            "@angular/router": { main: "router.umd.js", defaultExtension: "js" },
+            "@angular/router-deprecated": { main: "router-deprecated.umd.js", defaultExtension: "js" },
             "rxjs": { defaultExtension: "js" }
           },
           map: {
-            "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js",
-            "@angular": "node_modules/@angular",
-            "rxjs": "node_modules/rxjs"
+            "angular2-jwt": "lib/angular2-jwt/angular2-jwt.js",
+            "@angular": "lib/@angular",
+            "rxjs": "lib/rxjs"
           }
         });
   </script>
