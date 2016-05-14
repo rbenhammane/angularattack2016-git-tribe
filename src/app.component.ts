@@ -3,9 +3,11 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router} from '@angular
 import {Location} from '@angular/common';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import 'rxjs/Rx'; 
 
 import {LoginComponent} from './components/login/login.component';
 import {WorldComponent} from './components/world/world.component';
+import {TestComponent} from './components/test/test.component';
 
 @Component({
     selector: 'git-tribe',
@@ -44,7 +46,8 @@ import {WorldComponent} from './components/world/world.component';
 })
 @RouteConfig([
   { path: '/',      name: 'Login',  component: LoginComponent },
-  { path: '/world', name: 'World',  component: WorldComponent }
+  { path: '/world', name: 'World',  component: WorldComponent },
+  { path: '/test', name: 'Test',  component: TestComponent }
 ])
 export class AppComponent {
 
