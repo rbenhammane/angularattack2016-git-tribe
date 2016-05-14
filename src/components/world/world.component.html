@@ -1,3 +1,5 @@
-<div class="world">
-	
+<div class="world-container">
+	<div class="world" (mousemove)="move($event)" (mouseup)="reset()" (mouseleave)="reset()" [ngStyle]="{'width': getDiameter() + 'px', 'height': getDiameter() + 'px', 'top': worldtop + 'px', 'left': worldleft + 'px'}">
+		<world-village *ngFor="let repo of repos; let i = index" [repo]="repo" [x]="coordinates[i].x" [y]="coordinates[i].y" [diameter]="getDiameter()"></world-village>
+	</div>
 </div>
