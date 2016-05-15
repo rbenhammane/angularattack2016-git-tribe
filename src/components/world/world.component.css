@@ -15,9 +15,19 @@
 }
 
 .world-container-header .mdl-tooltip {
-	margin: 0 auto;
-	width: 600px;
+	margin-top: 8px;
+	width: 604px !important;
+	height: 600px !important;
+	max-width: 604px !important;
+	max-height: 596px !important;
+	margin-left: -586px !important;
 	padding-right: 0;
+	border-radius: 10px;
+}
+
+.world-container-header .mdl-tooltip .demo-card-square {
+	width: 596px !important;
+    height: 596px !important;
 }
 
 .world-container-header i {
