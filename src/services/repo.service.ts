@@ -6,31 +6,31 @@ import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
 export class RepoService {
-	  constructor (private http: Http) {}
+  constructor(private http: Http) {}
 
-      loadRepoByUser (term: string): Repo[] {
-        let urlRepos='https://api.github.com/users/'+term+'/repos';
-      return this.http.get(urlRepos)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+  loadRepoByUser(user: string) {
+    // let urlRepos = 'https://api.github.com/users/' + user + '/repos';
+    let urlRepos = 'https://api.github.com/users/johnpapa/repos';
+    return this.http.get(urlRepos)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-        loadBranch (term: string, repo:string): Observable<Branch[]> {
-        let urlRepos='https://api.github.com/repos/'+term+'/'+repo+'/branches';
-      return this.http.get(urlRepos)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+  loadBranch(user: string, repo: string): Observable < Branch[] > {
+    let urlRepos = 'https://api.github.com/repos/' + user + '/' + repo + '/branches';
+    return this.http.get(urlRepos)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-    private extractData(res: Response) {
+  private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
-    let body = res.json();
-    return body.data || { };
+    return res.json() || {};
   }
 
-  private handleError (error: any) {
+  private handleError(error: any) {
     // In a real world app, we might send the error to remote logging infrastructure
     let errMsg = error.message || 'Server error';
     console.error(errMsg); // log to console instead

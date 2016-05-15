@@ -1,4 +1,4 @@
 
 export class Coordinate {
-	constructor(public x: int; public y: int) {}
+	constructor(public x: number, public y: number) {}
 }

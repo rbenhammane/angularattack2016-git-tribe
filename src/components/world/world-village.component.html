@@ -1,1 +1,32 @@
-<div class="world-village" [ngStyle]="{'top': (getWorldRadius() - 40 * y) + 'px', 'right': (getWorldRadius() - 40 * x) + 'px'}"></div>
+<div [attr.id]="'village_' + i" class="world-village" [ngStyle]="{'top': (getWorldRadius() - 40 * y) + 'px', 'right': (getWorldRadius() - 40 * x) + 'px'}"></div>
+<div [attr.for]="'village_' + i" class="mdl-tooltip">
+	<div class="demo-card-square mdl-card mdl-shadow--2dp">
+	  <div class="mdl-card__title mdl-card--expand repo-name">
+	    <h2 class="mdl-card__title-text">{{ repo.name }}</h2>
+	    <p>{{ repo.description }}</p>
+	  </div>
+	  <div class="mdl-card__supporting-text repo-detail">
+	    <ul class="demo-list-icon mdl-list">
+		  <li class="mdl-list__item">
+		    <span class="mdl-list__item-primary-content">
+			    <i class="material-icons mdl-list__item-icon">account_circle</i>
+			    {{ repo.owner.login }}
+			</span>
+			<i class="mdl-list__item-secondary-action"><img [src]="repo.owner.avatar_url" width="48"></i>
+		  </li>
+		  <li class="mdl-list__item" *ngIf="repo.fork">
+		    <span class="mdl-list__item-primary-content">
+			    <i class="material-icons mdl-list__item-icon">call_split</i>
+			    Fork
+			</span>
+		  </li>
+		  <li class="mdl-list__item">
+		    <span class="mdl-list__item-primary-content">
+			    <i class="material-icons mdl-list__item-icon">access_time</i>
+			    {{ getDate(repo.created_at) | date:'short' }}
+			</span>
+		  </li>
+		</ul>
+	  </div>
+	</div>
+</div>

@@ -8,6 +8,23 @@
 	border-radius: 10px;
 }
 
+.world-container-header {
+	margin: 0 auto;
+	width: 600px;
+	padding-right: 0;
+}
+
+.world-container-header .mdl-tooltip {
+	margin: 0 auto;
+	width: 600px;
+	padding-right: 0;
+}
+
+.world-container-header i {
+	background-color: #8B9B0D;
+	cursor: pointer;
+}
+
 .world {
 	position: relative;
 	margin: auto;
@@ -46,3 +63,17 @@
 	background-image: url('/images/stones.png');
 	color: lightgreen;
 }
+
+.world-loading {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.world-loading padding {
+	width: 50%;
+}
+
+.world-loading div {
+	display: table-cell;
+}
+

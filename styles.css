@@ -24,10 +24,15 @@
 }
 
 .demo-main {
-  margin-top: -35vh;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
+
+  background-color: #E1CFAF;
+  background-image: url('images/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1500px;
 }
 
 .demo-header .mdl-layout__header-row {
@@ -41,7 +46,7 @@
 }
 
 .demo-content {
-  border-radius: 2px;
+  border-radius: 30px;
   padding: 80px 56px;
   margin-bottom: 80px;
 }

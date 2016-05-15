@@ -3,9 +3,9 @@ import { Coordinate } from '../../model/coordinate';
 
 export class WorldHelper {
 
-	static rotationRadius: int;
+	static rotationRadius: number;
 
-	static generateVillagesCoords: Coordinate[] (repos) {
+	static generateVillagesCoords (repos): Coordinate[] {
 
 		let coordinates: Coordinate[] = new Array(repos.length);
 
@@ -57,7 +57,7 @@ export class WorldHelper {
 		return coordinates;
 	}
 
-	static generateLakesCoords: Coordinate[] (coords: Coordinate[]) {
+	static generateLakesCoords (coords: Coordinate[]): Coordinate[] {
 
 		let coordinates: Coordinate[] = [];
 
@@ -123,7 +123,7 @@ export class WorldHelper {
 		return coordinates;
 	}
 
-	static generateForestsCoordinates: Coordinate[] (coords: Coordinate[], bigCoords: Coordinate[]) {
+	static generateForestsCoordinates (coords: Coordinate[], bigCoords: Coordinate[]): Coordinate[] {
 
 		let coordinates: Coordinate[] = [];
 
@@ -192,7 +192,7 @@ export class WorldHelper {
 		return coordinates;
 	}
 
-	static generateTreesCoordinates: Coordinate[] (smallCoords: Coordinate[], coords: Coordinate[], bigCoords: Coordinate[]) {
+	static generateTreesCoordinates (smallCoords: Coordinate[], coords: Coordinate[], bigCoords: Coordinate[]): Coordinate[] {
 
 		let coordinates: Coordinate[] = [];
 
@@ -267,7 +267,7 @@ export class WorldHelper {
 		return coordinates;
 	}
 
-	static generateStonesCoordinates: Coordinate[] (smallCoords: Coordinate[], coords: Coordinate[], bigCoords: Coordinate[], smallCoords1: Coordinate[]) {
+	static generateStonesCoordinates (smallCoords: Coordinate[], coords: Coordinate[], bigCoords: Coordinate[], smallCoords1: Coordinate[]): Coordinate[] {
 
 		let coordinates: Coordinate[] = [];
 

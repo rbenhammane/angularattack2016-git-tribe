@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
+import {Repo} from '../model/repo';
+
 @Injectable()
 export class ConstService {
 

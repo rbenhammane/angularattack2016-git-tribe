@@ -28,14 +28,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                 function RepoService(http) {
                     this.http = http;
                 }
-                RepoService.prototype.loadRepoByUser = function (term) {
-                    var urlRepos = 'https://api.github.com/users/' + term + '/repos';
+                RepoService.prototype.loadRepoByUser = function (user) {
+                    var urlRepos = 'https://api.github.com/users/johnpapa/repos';
                     return this.http.get(urlRepos)
                         .map(this.extractData)
                         .catch(this.handleError);
                 };
-                RepoService.prototype.loadBranch = function (term, repo) {
-                    var urlRepos = 'https://api.github.com/repos/' + term + '/' + repo + '/branches';
+                RepoService.prototype.loadBranch = function (user, repo) {
+                    var urlRepos = 'https://api.github.com/repos/' + user + '/' + repo + '/branches';
                     return this.http.get(urlRepos)
                         .map(this.extractData)
                         .catch(this.handleError);
@@ -44,8 +44,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                     if (res.status < 200 || res.status >= 300) {
                         throw new Error('Bad response status: ' + res.status);
                     }
-                    var body = res.json();
-                    return body.data || {};
+                    return res.json() || {};
                 };
                 RepoService.prototype.handleError = function (error) {
                     var errMsg = error.message || 'Server error';

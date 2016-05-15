@@ -22,32 +22,15 @@ System.register(['@angular/core', '../../services/repo.service'], function(expor
             }],
         execute: function() {
             TestComponent = (function () {
-                function TestComponent(_repoService) {
-                    this._repoService = _repoService;
-                    console.log('test OK');
+                function TestComponent() {
                 }
-                TestComponent.prototype.loadRepoByUser = function (term) {
-                    var _this = this;
-                    this.userName = term;
-                    this._repoService.loadRepoByUser(term)
-                        .subscribe(function (repos) { return _this.repos = repos; }, function (error) { return _this.errorMessage = error; });
-                };
-                TestComponent.prototype.loadBranch = function (term, branch) {
-                    var _this = this;
-                    this.userName = term;
-                    this._repoService.loadBranch(term, branch)
-                        .subscribe(function (branchs) { return _this.branchs = branchs; }, function (error) { return _this.errorMessage = error; });
-                    console.log(this.branchs);
-                };
-                TestComponent.prototype.ngOnInit = function () {
-                };
                 TestComponent = __decorate([
                     core_1.Component({
                         selector: 'my-test',
                         template: "\n    \t\t  <div class=\"col-md-6\">\n    \t\t  <div>\n    \t\t  \t<input #term (keyup)=\"loadRepoByUser(term.value)\" placeholder=\"userName\"/>\n    \t\t  </div>\n    \t\t   <h2>Repos</h2>\n              <ul class=\"heroes\">\n                <li *ngFor=\"let repo of repos\">\n                  <span class=\"badge\">{{repo.full_name}}</span> {{repo.full_name}}\n                </li>\n              </ul>\n              </div>\n          <div>\n          <input #branch (keyup)=\"loadBranch(term.value,branch.value)\" placeholder=\"branch\"/>\n          </div>\n               ",
                         providers: [repo_service_1.RepoService]
                     }), 
-                    __metadata('design:paramtypes', [repo_service_1.RepoService])
+                    __metadata('design:paramtypes', [])
                 ], TestComponent);
                 return TestComponent;
             }());

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', './world.helper', './world-village.component', '../../services/const.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router-deprecated', './world.helper', './world-village.component', '../login/login.component', '../../services/repo.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, router_deprecated_2, angular2_jwt_1, world_helper_1, world_village_component_1, const_service_1;
+    var core_1, router_deprecated_1, world_helper_1, world_village_component_1, login_component_1, repo_service_1;
     var WorldComponent;
     return {
         setters:[
@@ -19,10 +19,6 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
             },
             function (router_deprecated_1_1) {
                 router_deprecated_1 = router_deprecated_1_1;
-                router_deprecated_2 = router_deprecated_1_1;
-            },
-            function (angular2_jwt_1_1) {
-                angular2_jwt_1 = angular2_jwt_1_1;
             },
             function (world_helper_1_1) {
                 world_helper_1 = world_helper_1_1;
@@ -30,37 +26,46 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
             function (world_village_component_1_1) {
                 world_village_component_1 = world_village_component_1_1;
             },
-            function (const_service_1_1) {
-                const_service_1 = const_service_1_1;
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
+            },
+            function (repo_service_1_1) {
+                repo_service_1 = repo_service_1_1;
             }],
         execute: function() {
             WorldComponent = (function () {
-                function WorldComponent(_consts) {
-                    var _this = this;
-                    this._consts = _consts;
+                function WorldComponent(_repoService, _login) {
+                    this._repoService = _repoService;
+                    this._login = _login;
                     this.mousex = 0;
                     this.mousey = 0;
                     this.worldtop = 0;
                     this.worldleft = 0;
-                    this.getWorldRadius = function () {
-                        return _this.getDiameter() / 2 + 20;
-                    };
                 }
                 WorldComponent.prototype.ngOnInit = function () {
-                    this.repos = this._consts.repos;
-                    this.coordinates = world_helper_1.WorldHelper.generateVillagesCoords(this.repos);
-                    this.worldtop = (600 - this.getDiameter()) / 2;
-                    this.worldleft = (600 - this.getDiameter()) / 2;
-                    this.lakesCoordinates = world_helper_1.WorldHelper.generateLakesCoords(this.coordinates);
-                    this.forestsCoordinates = world_helper_1.WorldHelper.generateForestsCoordinates(this.coordinates, this.lakesCoordinates);
-                    this.treesCoordinates = world_helper_1.WorldHelper.generateTreesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates);
-                    this.stonesCoordinates = world_helper_1.WorldHelper.generateStonesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates, this.treesCoordinates);
+                    var _this = this;
+                    this._repoService.loadRepoByUser(this._login.profile.nickname).subscribe(function (repos) {
+                        _this.repos = repos;
+                        _this.coordinates = world_helper_1.WorldHelper.generateVillagesCoords(_this.repos);
+                        _this.worldtop = (600 - _this.getDiameter()) / 2;
+                        _this.worldleft = (600 - _this.getDiameter()) / 2;
+                        _this.lakesCoordinates = world_helper_1.WorldHelper.generateLakesCoords(_this.coordinates);
+                        _this.forestsCoordinates = world_helper_1.WorldHelper.generateForestsCoordinates(_this.coordinates, _this.lakesCoordinates);
+                        _this.treesCoordinates = world_helper_1.WorldHelper.generateTreesCoordinates(_this.coordinates, _this.lakesCoordinates, _this.forestsCoordinates);
+                        _this.stonesCoordinates = world_helper_1.WorldHelper.generateStonesCoordinates(_this.coordinates, _this.lakesCoordinates, _this.forestsCoordinates, _this.treesCoordinates);
+                    });
+                };
+                WorldComponent.prototype.ngAfterViewChecked = function () {
+                    componentHandler.upgradeDom();
                 };
                 WorldComponent.prototype.floor = function (val) {
                     return Math.floor(val);
                 };
                 WorldComponent.prototype.getDiameter = function () {
                     return (600 * (2 * Math.floor((world_helper_1.WorldHelper.rotationRadius + 7) / 15) + 1));
+                };
+                WorldComponent.prototype.getWorldRadius = function () {
+                    return this.getDiameter() / 2 + 20;
                 };
                 WorldComponent.prototype.move = function (event) {
                     if (event.buttons === 1) {
@@ -93,10 +98,9 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
                         templateUrl: './src/components/world/world.component.html',
                         styleUrls: ['./src/components/world/world.component.css'],
                         directives: [router_deprecated_1.ROUTER_DIRECTIVES, world_village_component_1.WorldVillageComponent],
-                        providers: [const_service_1.ConstService]
-                    }),
-                    router_deprecated_2.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }), 
-                    __metadata('design:paramtypes', [const_service_1.ConstService])
+                        providers: [repo_service_1.RepoService, login_component_1.LoginComponent]
+                    }), 
+                    __metadata('design:paramtypes', [repo_service_1.RepoService, login_component_1.LoginComponent])
                 ], WorldComponent);
                 return WorldComponent;
             }());

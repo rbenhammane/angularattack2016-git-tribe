@@ -7,7 +7,6 @@ import 'rxjs/Rx';
 
 import {LoginComponent} from './components/login/login.component';
 import {WorldComponent} from './components/world/world.component';
-import {TestComponent} from './components/test/test.component';
 
 @Component({
     selector: 'git-tribe',
@@ -22,7 +21,6 @@ import {TestComponent} from './components/test/test.component';
           </div>
         </div>
       </header>
-      <div class="demo-ribbon"></div>
       <main class="demo-main mdl-layout__content">
         <div class="demo-container mdl-grid">
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
@@ -30,15 +28,7 @@ import {TestComponent} from './components/test/test.component';
             <router-outlet></router-outlet>
           </div>
         </div>
-        <footer class="demo-footer mdl-mini-footer">
-          <div class="mdl-mini-footer--left-section">
-            <ul class="mdl-mini-footer--link-list">
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Privacy and Terms</a></li>
-              <li><a href="#">User Agreement</a></li>
-            </ul>
-          </div>
-        </footer>
+       
       </main>
     </div>
     `,
@@ -46,8 +36,7 @@ import {TestComponent} from './components/test/test.component';
 })
 @RouteConfig([
   { path: '/',      name: 'Login',  component: LoginComponent },
-  { path: '/world', name: 'World',  component: WorldComponent },
-  { path: '/test', name: 'Test',  component: TestComponent }
+  { path: '/world', name: 'World',  component: WorldComponent }
 ])
 export class AppComponent {
 
