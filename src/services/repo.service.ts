@@ -17,6 +17,7 @@ export class RepoService {
   }
 
   loadBranch(user: string, repo: string): Observable < Branch[] > {
+    user="johnpapa";
     let urlRepos = 'https://api.github.com/repos/' + user + '/' + repo + '/branches';
     return this.http.get(urlRepos)
       .map(this.extractData)

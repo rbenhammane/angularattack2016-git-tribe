@@ -7,6 +7,9 @@ import 'rxjs/Rx';
 
 import {LoginComponent} from './components/login/login.component';
 import {WorldComponent} from './components/world/world.component';
+import {HelpComponent} from './components/help/help.component';
+import {VillageComponent} from './components/village/village.component';
+ 
 
 declare var componentHandler;
 
@@ -16,14 +19,14 @@ declare var componentHandler;
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
       <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
           <div class="mdl-layout__header-row">
-          <div class="logo">
-            <h3 class="logoText"> {{ title }}</h3>
+          <div class="logo" (click)="goHome()">
+            <h3 class="logoText" > {{ title }}</h3>
             <span>Visually github like a game</span>
           </div>
           <div class="mdl-layout-spacer"></div>
             <div class="snippet-demo-container demo-button demo-button__raised-ripple">
-            <button *ngIf="!loggedIn()" class="help mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-              Help
+            <button *ngIf="loggedIn()" (click)="goWorld()" class="help mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              My world
             </button>
             </div>
            <button *ngIf="!loggedIn()" (click)="login()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
@@ -36,7 +39,7 @@ declare var componentHandler;
     
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
         for="signout">
-      <li class="mdl-menu__item">Help</li>
+      <li class="mdl-menu__item" (click)="goHelp()">Help</li>
     <li class="mdl-menu__item" (click)="logout()" >Sign out</li>
     </ul>
            </div>
@@ -57,7 +60,9 @@ declare var componentHandler;
 })
 @RouteConfig([
   { path: '/',      name: 'Login',  component: LoginComponent },
-  { path: '/world', name: 'World',  component: WorldComponent }
+  { path: '/world', name: 'World',  component: WorldComponent },
+  { path: '/help', name: 'Help',  component: HelpComponent },
+  {path: '/village/:name', name:'Village',component: VillageComponent}
 ])
 export class AppComponent implements AfterViewChecked {
 
@@ -86,7 +91,7 @@ export class AppComponent implements AfterViewChecked {
 
         localStorage.setItem('profile', JSON.stringify(profile));
         localStorage.setItem('id_token', id_token);
-
+        this._router.navigate(["World"]);
         self.loggedIn();
       });
   }
@@ -101,4 +106,15 @@ export class AppComponent implements AfterViewChecked {
     return tokenNotExpired();
   }
 
+  goHome(){
+    this._router.navigate(["Login"]);
+  }
+
+  goHelp(){
+    this._router.navigate(["Help"]);
+  }
+
+  goWorld(){
+    this._router.navigate(["World"]);
+  }
 }
