@@ -65,15 +65,12 @@
 }
 
 .world-loading {
-	width: 100%;
+	width: 40px;
 	margin: 0 auto;
 }
 
-.world-loading padding {
-	width: 50%;
+.world-loading div {
+	background-color: white;
 }
 
-.world-loading div {
-	display: table-cell;
-}
 

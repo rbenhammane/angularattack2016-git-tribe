@@ -37,8 +37,6 @@
 		</div>
 	</div>
 </div>
-<div class="world-loading">
-	<div class="padding"></div>
-	<div class="mdl-spinner mdl-js-spinner is-active"></div>
-	<div class="padding"></div>
+<div class="world-loading" *ngIf="!repos">
+	<div class="mdl-spinner mdl-js-spinner material-icons mdl-list__item-avatar is-active"></div>
 </div>
