@@ -1,15 +1,6 @@
-<h1>Welcome to Angular2 with Auth0</h1>
-<button *ngIf="!loggedIn()" (click)="login()">Login</button>
-
-<div class="mdl-layout__header-row" *ngIf="loggedIn()">
-  <span class="mdl-layout-title"><img src="{{ profile.picture }}" width="60"></span>
-  <div class="mdl-layout-spacer">
-  	<a [routerLink]="['World']"><h3>{{ profile.nickname }}</h3></a>
-  </div>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-  	<button (click)="logout()">Logout</button>
-  </div>
-  <div>
-  </div>
-  
+<h1 class="logoText">Welcome to Git Tribe</h1>
+<div class="mdl-card__supporting-text">
+<p>
+Git Tribes is a new data visuamization concept, it's main purpose is to make the complex and boaring daskboards/interfaces more fun, by converting them to a game like ones. Our goal is to make people happy when they work, and in order to impact the game/dashboard do more work, hence improving their productivity (some sort of gamification as well). 
+</p>
 </div>

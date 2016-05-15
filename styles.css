@@ -66,3 +66,28 @@
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
 }
+
+@font-face {
+  font-family: 'Lucida Blackletter';
+  src: url('./font/Lucida_Blackletter/Aro.ttf');
+}
+
+.logoText {
+  margin: 0px;
+  font-family: 'Lucida Blackletter';
+}
+
+.logo {
+  display: block;
+}
+
+.mdl-layout__header-row{
+  height: 76;
+}
+
+.help{
+  margin-right: 10px;
+}
+
+
+
