@@ -5,8 +5,11 @@ System.register([], function(exports_1, context_1) {
     return {
         setters:[],
         execute: function() {
-            class ShaUrl {
-            }
+            ShaUrl = (function () {
+                function ShaUrl() {
+                }
+                return ShaUrl;
+            }());
             exports_1("ShaUrl", ShaUrl);
         }
     }

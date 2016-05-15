@@ -5,12 +5,13 @@ System.register([], function(exports_1, context_1) {
     return {
         setters:[],
         execute: function() {
-            class Coordinate {
-                constructor(x, y) {
+            Coordinate = (function () {
+                function Coordinate(x, y) {
                     this.x = x;
                     this.y = y;
                 }
-            }
+                return Coordinate;
+            }());
             exports_1("Coordinate", Coordinate);
         }
     }

@@ -9,8 +9,40 @@
 }
 
 .world {
-	position: absolute;
+	position: relative;
 	margin: auto;
 	background-image: url('/images/world.png');
 	cursor: pointer;
+}
+
+.lake {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	background-image: url('/images/lake.png');
+	color: lightgreen;
+}
+
+.forest {
+	position: absolute;
+	width: 120px;
+	height: 80px;
+	background-image: url('/images/forest.png');
+	color: lightgreen;
+}
+
+.trees {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background-image: url('/images/trees.png');
+	color: lightgreen;
+}
+
+.stones {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background-image: url('/images/stones.png');
+	color: lightgreen;
 }

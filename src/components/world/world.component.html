@@ -1,5 +1,9 @@
 <div class="world-container">
 	<div class="world" (mousemove)="move($event)" (mouseup)="reset()" (mouseleave)="reset()" [ngStyle]="{'width': getDiameter() + 'px', 'height': getDiameter() + 'px', 'top': worldtop + 'px', 'left': worldleft + 'px'}">
-		<world-village *ngFor="let repo of repos; let i = index" [repo]="repo" [x]="coordinates[i].x" [y]="coordinates[i].y" [diameter]="getDiameter()"></world-village>
+		<world-village *ngFor="let repo of repos; let i = index" [repo]="repo" [x]="coordinates[i].x" [y]="coordinates[i].y" [diameter]="getDiameter()" [i]="i"></world-village>
+		<div class="lake" *ngFor="let coordinate of lakesCoordinates; let i = index" [ngStyle]="{'top': (getWorldRadius() - 40 * coordinate.y) + 'px', 'right': (getWorldRadius() - 40 * coordinate.x) + 'px'}"></div>
+		<div class="forest" *ngFor="let coordinate of forestsCoordinates; let i = index" [ngStyle]="{'top': (getWorldRadius() - 40 * coordinate.y) + 'px', 'right': (getWorldRadius() - 40 * coordinate.x) + 'px'}"></div>
+		<div class="trees" *ngFor="let coordinate of treesCoordinates; let i = index" [ngStyle]="{'top': (getWorldRadius() - 40 * coordinate.y) + 'px', 'right': (getWorldRadius() - 40 * coordinate.x) + 'px'}"></div>
+		<div class="stones" *ngFor="let coordinate of stonesCoordinates; let i = index" [ngStyle]="{'top': (getWorldRadius() - 40 * coordinate.y) + 'px', 'right': (getWorldRadius() - 40 * coordinate.x) + 'px'}"></div>
 	</div>
 </div>

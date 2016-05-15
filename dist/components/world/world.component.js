@@ -34,27 +34,35 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
                 const_service_1 = const_service_1_1;
             }],
         execute: function() {
-            let WorldComponent = class WorldComponent {
-                constructor(_consts) {
+            WorldComponent = (function () {
+                function WorldComponent(_consts) {
+                    var _this = this;
                     this._consts = _consts;
                     this.mousex = 0;
                     this.mousey = 0;
                     this.worldtop = 0;
                     this.worldleft = 0;
+                    this.getWorldRadius = function () {
+                        return _this.getDiameter() / 2 + 20;
+                    };
                 }
-                ngOnInit() {
+                WorldComponent.prototype.ngOnInit = function () {
                     this.repos = this._consts.repos;
                     this.coordinates = world_helper_1.WorldHelper.generateVillagesCoords(this.repos);
                     this.worldtop = (600 - this.getDiameter()) / 2;
                     this.worldleft = (600 - this.getDiameter()) / 2;
-                }
-                floor(val) {
+                    this.lakesCoordinates = world_helper_1.WorldHelper.generateLakesCoords(this.coordinates);
+                    this.forestsCoordinates = world_helper_1.WorldHelper.generateForestsCoordinates(this.coordinates, this.lakesCoordinates);
+                    this.treesCoordinates = world_helper_1.WorldHelper.generateTreesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates);
+                    this.stonesCoordinates = world_helper_1.WorldHelper.generateStonesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates, this.treesCoordinates);
+                };
+                WorldComponent.prototype.floor = function (val) {
                     return Math.floor(val);
-                }
-                getDiameter() {
+                };
+                WorldComponent.prototype.getDiameter = function () {
                     return (600 * (2 * Math.floor((world_helper_1.WorldHelper.rotationRadius + 7) / 15) + 1));
-                }
-                move(event) {
+                };
+                WorldComponent.prototype.move = function (event) {
                     if (event.buttons === 1) {
                         if (this.mousex !== 0 && this.mousey !== 0) {
                             this.worldtop += event.y - this.mousey;
@@ -75,22 +83,23 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
                         this.mousex = event.x;
                         this.mousey = event.y;
                     }
-                }
-                reset() {
+                };
+                WorldComponent.prototype.reset = function () {
                     this.mousex = 0;
                     this.mousey = 0;
-                }
-            };
-            WorldComponent = __decorate([
-                core_1.Component({
-                    templateUrl: './src/components/world/world.component.html',
-                    styleUrls: ['./src/components/world/world.component.css'],
-                    directives: [router_deprecated_1.ROUTER_DIRECTIVES, world_village_component_1.WorldVillageComponent],
-                    providers: [const_service_1.ConstService]
-                }),
-                router_deprecated_2.CanActivate(() => angular2_jwt_1.tokenNotExpired()), 
-                __metadata('design:paramtypes', [const_service_1.ConstService])
-            ], WorldComponent);
+                };
+                WorldComponent = __decorate([
+                    core_1.Component({
+                        templateUrl: './src/components/world/world.component.html',
+                        styleUrls: ['./src/components/world/world.component.css'],
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES, world_village_component_1.WorldVillageComponent],
+                        providers: [const_service_1.ConstService]
+                    }),
+                    router_deprecated_2.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }), 
+                    __metadata('design:paramtypes', [const_service_1.ConstService])
+                ], WorldComponent);
+                return WorldComponent;
+            }());
             exports_1("WorldComponent", WorldComponent);
         }
     }

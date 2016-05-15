@@ -18,8 +18,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let ConstService = class ConstService {
-                constructor() {
+            ConstService = (function () {
+                function ConstService() {
                     this.repos = [
                         {
                             "id": 55269360,
@@ -2663,11 +2663,12 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                         }
                     ];
                 }
-            };
-            ConstService = __decorate([
-                core_1.Injectable(), 
-                __metadata('design:paramtypes', [])
-            ], ConstService);
+                ConstService = __decorate([
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [])
+                ], ConstService);
+                return ConstService;
+            }());
             exports_1("ConstService", ConstService);
         }
     }

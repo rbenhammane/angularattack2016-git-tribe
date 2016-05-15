@@ -24,40 +24,42 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'],
                 angular2_jwt_1 = angular2_jwt_1_1;
             }],
         execute: function() {
-            let LoginComponent = class LoginComponent {
-                constructor(_router) {
+            LoginComponent = (function () {
+                function LoginComponent(_router) {
                     this._router = _router;
                     this.lock = new Auth0Lock('6VzIODFHRWvGU14nGK0rMTuDwXBqBNmt', 'gittribe.auth0.com');
                     this.profile = JSON.parse(localStorage.getItem('profile'));
                 }
-                login() {
-                    let self = this;
-                    this.lock.show((err, profile, id_token) => {
+                LoginComponent.prototype.login = function () {
+                    var _this = this;
+                    var self = this;
+                    this.lock.show(function (err, profile, id_token) {
                         if (err) {
                             throw new Error(err);
                         }
-                        this.profile = profile;
+                        _this.profile = profile;
                         localStorage.setItem('profile', JSON.stringify(profile));
                         localStorage.setItem('id_token', id_token);
                         self.loggedIn();
                     });
-                }
-                logout() {
+                };
+                LoginComponent.prototype.logout = function () {
                     localStorage.removeItem('profile');
                     localStorage.removeItem('id_token');
                     this.loggedIn();
-                }
-                loggedIn() {
+                };
+                LoginComponent.prototype.loggedIn = function () {
                     return angular2_jwt_1.tokenNotExpired();
-                }
-            };
-            LoginComponent = __decorate([
-                core_1.Component({
-                    templateUrl: './src/components/login/login.component.html',
-                    directives: [router_deprecated_1.ROUTER_DIRECTIVES]
-                }), 
-                __metadata('design:paramtypes', [router_deprecated_1.Router])
-            ], LoginComponent);
+                };
+                LoginComponent = __decorate([
+                    core_1.Component({
+                        templateUrl: './src/components/login/login.component.html',
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+                    }), 
+                    __metadata('design:paramtypes', [router_deprecated_1.Router])
+                ], LoginComponent);
+                return LoginComponent;
+            }());
             exports_1("LoginComponent", LoginComponent);
         }
     }

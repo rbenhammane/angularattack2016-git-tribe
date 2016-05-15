@@ -5,8 +5,11 @@ System.register([], function(exports_1, context_1) {
     return {
         setters:[],
         execute: function() {
-            class Commit {
-            }
+            Commit = (function () {
+                function Commit() {
+                }
+                return Commit;
+            }());
             exports_1("Commit", Commit);
         }
     }

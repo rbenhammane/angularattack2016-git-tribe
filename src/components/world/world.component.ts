@@ -25,6 +25,10 @@ export class WorldComponent implements OnInit {
   rotationRadius: int;
   repos: any;
   coordinates: Coordinate[];
+  lakesCoordinates: Coordinate[];
+  forestsCoordinates: Coordinate[];
+  treesCoordinates: Coordinate[];
+  stonesCoordinates: Coordinate[];
 
   constructor(private _consts: ConstService) {
   }
@@ -34,6 +38,11 @@ export class WorldComponent implements OnInit {
     this.coordinates = WorldHelper.generateVillagesCoords(this.repos);
     this.worldtop = (600 - this.getDiameter()) / 2;
     this.worldleft = (600 - this.getDiameter()) / 2;
+
+    this.lakesCoordinates = WorldHelper.generateLakesCoords(this.coordinates);
+    this.forestsCoordinates = WorldHelper.generateForestsCoordinates(this.coordinates, this.lakesCoordinates);
+    this.treesCoordinates = WorldHelper.generateTreesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates);
+    this.stonesCoordinates = WorldHelper.generateStonesCoordinates(this.coordinates, this.lakesCoordinates, this.forestsCoordinates, this.treesCoordinates);
   }
 
   floor(val: number) {
@@ -42,6 +51,10 @@ export class WorldComponent implements OnInit {
 
   getDiameter() {
     return (600 * (2 * Math.floor((WorldHelper.rotationRadius + 7) / 15) + 1));
+  }
+
+  getWorldRadius: int () {
+    return this.getDiameter() / 2 + 20;
   }
 
   move(event) {

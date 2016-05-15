@@ -13,7 +13,7 @@ import { ConstService } from '../../services/const.service'
 })
 @CanActivate(() => tokenNotExpired())
 export class WorldVillageComponent implements OnInit {
-
+@Input() i: int;
   @Input() x: int;
   @Input() y: int;
   @Input() diameter: int;
@@ -26,7 +26,7 @@ export class WorldVillageComponent implements OnInit {
   }
 
   getWorldRadius: int () {
-    return this.diameter / 2 - 20;
+    return this.diameter / 2 + 20;
   }
 
 }

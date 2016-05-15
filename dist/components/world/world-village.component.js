@@ -25,41 +25,47 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt'],
                 angular2_jwt_1 = angular2_jwt_1_1;
             }],
         execute: function() {
-            let WorldVillageComponent = class WorldVillageComponent {
-                constructor() {
-                    this.getWorldRadius = () => {
-                        return this.diameter / 2 - 20;
+            WorldVillageComponent = (function () {
+                function WorldVillageComponent() {
+                    var _this = this;
+                    this.getWorldRadius = function () {
+                        return _this.diameter / 2 + 20;
                     };
                 }
-                ngOnInit() {
-                }
-            };
-            __decorate([
-                core_1.Input(), 
-                __metadata('design:type', Object)
-            ], WorldVillageComponent.prototype, "x", void 0);
-            __decorate([
-                core_1.Input(), 
-                __metadata('design:type', Object)
-            ], WorldVillageComponent.prototype, "y", void 0);
-            __decorate([
-                core_1.Input(), 
-                __metadata('design:type', Object)
-            ], WorldVillageComponent.prototype, "diameter", void 0);
-            __decorate([
-                core_1.Input(), 
-                __metadata('design:type', Object)
-            ], WorldVillageComponent.prototype, "repo", void 0);
-            WorldVillageComponent = __decorate([
-                core_1.Component({
-                    selector: 'world-village',
-                    templateUrl: './src/components/world/world-village.component.html',
-                    styleUrls: ['./src/components/world/world-village.component.css'],
-                    directives: [router_deprecated_1.ROUTER_DIRECTIVES]
-                }),
-                router_deprecated_2.CanActivate(() => angular2_jwt_1.tokenNotExpired()), 
-                __metadata('design:paramtypes', [])
-            ], WorldVillageComponent);
+                WorldVillageComponent.prototype.ngOnInit = function () {
+                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], WorldVillageComponent.prototype, "i", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], WorldVillageComponent.prototype, "x", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], WorldVillageComponent.prototype, "y", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], WorldVillageComponent.prototype, "diameter", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], WorldVillageComponent.prototype, "repo", void 0);
+                WorldVillageComponent = __decorate([
+                    core_1.Component({
+                        selector: 'world-village',
+                        templateUrl: './src/components/world/world-village.component.html',
+                        styleUrls: ['./src/components/world/world-village.component.css'],
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+                    }),
+                    router_deprecated_2.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }), 
+                    __metadata('design:paramtypes', [])
+                ], WorldVillageComponent);
+                return WorldVillageComponent;
+            }());
             exports_1("WorldVillageComponent", WorldVillageComponent);
         }
     }
