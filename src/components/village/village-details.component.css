@@ -1,0 +1,35 @@
+
+.world-village {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background-image: url('/images/world-village.png');
+}
+
+.demo-card-square.mdl-card {
+  width: 320px;
+  /*height: 320px;*/
+}
+
+.mdl-tooltip {
+	max-width: 320px;
+}
+
+.repo-name {
+	display: block;
+	border-bottom: 4px #ddd dashed;
+}
+
+.repo-name h2 {
+	margin-bottom: 20px;
+}
+
+.repo-name p {
+	margin-bottom: 0;
+	padding-top: 10px;
+	border-top: 1px #ddd solid;
+}
+
+.repo-detail ul {
+	margin: 0;
+}

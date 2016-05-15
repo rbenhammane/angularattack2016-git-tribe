@@ -35,6 +35,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                         .catch(this.handleError);
                 };
                 RepoService.prototype.loadBranch = function (user, repo) {
+                    user = "johnpapa";
                     var urlRepos = 'https://api.github.com/repos/' + user + '/' + repo + '/branches';
                     return this.http.get(urlRepos)
                         .map(this.extractData)
