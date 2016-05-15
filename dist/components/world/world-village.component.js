@@ -38,9 +38,6 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
                 WorldVillageComponent.prototype.getDate = function (date) {
                     return new Date(date);
                 };
-                WorldVillageComponent.prototype.goToVillage = function (repo) {
-                    this._router.navigate(['/Village', { name: repo.name }]);
-                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Number)

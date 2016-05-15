@@ -30,11 +30,4 @@ export class WorldVillageComponent {
     return new Date(date);
   }
 
-  goToVillage(repo: Repo) {
-    this._router.navigate(['/Village', {name:repo.name}]);
-  }
-  
-  
-
-
 }
