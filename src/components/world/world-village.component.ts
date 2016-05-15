@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {RouteConfig, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {CanActivate} from '@angular/router-deprecated';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
@@ -20,6 +20,8 @@ export class WorldVillageComponent {
   @Input() diameter: number;
   @Input() repo: Repo;
 
+  @Output() select: EventEmitter<any> = new EventEmitter();
+
   constructor(private _router: Router) {}
 
   getWorldRadius () {
@@ -28,6 +30,10 @@ export class WorldVillageComponent {
 
   getDate (date: string) {
     return new Date(date);
+  }
+
+  selectVillage () {
+    this.select.emit(this.i);
   }
 
 }

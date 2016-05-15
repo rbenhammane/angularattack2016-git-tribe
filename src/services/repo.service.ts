@@ -18,8 +18,14 @@ export class RepoService {
 
   loadRepoByUser(user: string) {
     // let urlRepos = 'https://api.github.com/users/' + user + '/repos';
-    let urlRepos = 'https://api.github.com/users/johnpapa/repos' + this.tokens[Math.floor(Math.random() * 3)];
+    let urlRepos = 'https://api.github.com/users/johnpapa/repos' + this.tokens[Math.floor(Math.random() )];
     return this.http.get(urlRepos)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  load(url: string): Observable < any > {
+    return this.http.get((url.indexOf('{') > -1 ? url.substr(0, url.indexOf('{')) : url) + this.tokens[Math.floor(Math.random() * 3)])
       .map(this.extractData)
       .catch(this.handleError);
   }

@@ -34,8 +34,13 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                     ];
                 }
                 RepoService.prototype.loadRepoByUser = function (user) {
-                    var urlRepos = 'https://api.github.com/users/johnpapa/repos' + this.tokens[Math.floor(Math.random() * 3)];
+                    var urlRepos = 'https://api.github.com/users/johnpapa/repos' + this.tokens[Math.floor(Math.random())];
                     return this.http.get(urlRepos)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                };
+                RepoService.prototype.load = function (url) {
+                    return this.http.get((url.indexOf('{') > -1 ? url.substr(0, url.indexOf('{')) : url) + this.tokens[Math.floor(Math.random() * 3)])
                         .map(this.extractData)
                         .catch(this.handleError);
                 };
