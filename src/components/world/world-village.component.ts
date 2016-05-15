@@ -20,7 +20,7 @@ export class WorldVillageComponent {
   @Input() diameter: number;
   @Input() repo: Repo;
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   getWorldRadius () {
     return this.diameter / 2 + 20;
@@ -29,5 +29,12 @@ export class WorldVillageComponent {
   getDate (date: string) {
     return new Date(date);
   }
+
+  goToVillage(repo: Repo) {
+    this._router.navigate(['/Village', {name:repo.name}]);
+  }
+  
+  
+
 
 }

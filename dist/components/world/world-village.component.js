@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, angular2_jwt_1, repo_1;
+    var core_1, router_deprecated_1, router_deprecated_2, angular2_jwt_1, repo_1;
     var WorldVillageComponent;
     return {
         setters:[
@@ -19,6 +19,7 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
             },
             function (router_deprecated_1_1) {
                 router_deprecated_1 = router_deprecated_1_1;
+                router_deprecated_2 = router_deprecated_1_1;
             },
             function (angular2_jwt_1_1) {
                 angular2_jwt_1 = angular2_jwt_1_1;
@@ -28,13 +29,17 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
             }],
         execute: function() {
             WorldVillageComponent = (function () {
-                function WorldVillageComponent() {
+                function WorldVillageComponent(_router) {
+                    this._router = _router;
                 }
                 WorldVillageComponent.prototype.getWorldRadius = function () {
                     return this.diameter / 2 + 20;
                 };
                 WorldVillageComponent.prototype.getDate = function (date) {
                     return new Date(date);
+                };
+                WorldVillageComponent.prototype.goToVillage = function (repo) {
+                    this._router.navigate(['/Village', { name: repo.name }]);
                 };
                 __decorate([
                     core_1.Input(), 
@@ -62,8 +67,8 @@ System.register(['@angular/core', '@angular/router-deprecated', 'angular2-jwt', 
                         templateUrl: './src/components/world/world-village.component.html',
                         styleUrls: ['./src/components/world/world-village.component.css']
                     }),
-                    router_deprecated_1.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }), 
-                    __metadata('design:paramtypes', [])
+                    router_deprecated_2.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }), 
+                    __metadata('design:paramtypes', [router_deprecated_1.Router])
                 ], WorldVillageComponent);
                 return WorldVillageComponent;
             }());
