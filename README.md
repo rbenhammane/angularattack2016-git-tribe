@@ -39,7 +39,7 @@ If you receive an error message `"You do not have permission to publish to git-t
 
 ### Step 3) Add Your Team Members to Surge
 
-* `surge . --add ust3000@hotmail.com,rbenhammane@gmail.com`
+* `surge . --add team@gmail.com`
 
 
 ### Step 4) Wait til competition starts
